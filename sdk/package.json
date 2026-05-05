@@ -1,0 +1,39 @@
+{
+  "name": "acrossed",
+  "version": "0.2.0",
+  "description": "Acrossed SDK \u2014 universal cryptographic request enforcement. Works in Node.js, Edge Runtime, Deno, Bun, and browsers.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && node scripts/cjs-shim.mjs",
+    "prepublishOnly": "npm run build"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "rule-engine",
+    "rate-limit",
+    "hmac",
+    "edge",
+    "security"
+  ],
+  "devDependencies": {
+    "@types/node": "^22.10.1",
+    "typescript": "^5.7.2"
+  }
+}

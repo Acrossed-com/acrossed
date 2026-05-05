@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "acrossed"
+version = "1.0.0"
+description = "Sub-millisecond rule enforcement engine — Python SDK"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.8"
+authors = [{ name = "Acrossed" }]
+urls = { Homepage = "https://acrossed.com", Docs = "https://acrossed.com/docs" }
