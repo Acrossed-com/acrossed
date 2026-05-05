@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { RiDashboardLine as LayoutDashboard, RiBankCardLine as CreditCard, RiShieldCheckLine as ShieldCheck, RiInboxLine as Inbox } from "@remixicon/react";
+import { RiDashboardLine as LayoutDashboard, RiBankCardLine as CreditCard, RiShieldCheckLine as ShieldCheck, RiInboxLine as Inbox, RiGlobalLine as Globe, RiDatabase2Line as Database, RiImageLine as ImageIcon } from "@remixicon/react";
 type Tab = [string, string, React.ElementType];
 
 export function DashboardTabs({ isAdmin }: { isAdmin: boolean }) {
@@ -10,7 +10,13 @@ export function DashboardTabs({ isAdmin }: { isAdmin: boolean }) {
   const TABS: Tab[] = [
     ["Projects", "/dashboard", LayoutDashboard],
     ["Billing", "/dashboard/billing", CreditCard],
-    ...(isAdmin ? [["Admin", "/dashboard/admin", ShieldCheck] as Tab, ["Inbox", "/dashboard/admin/inbox", Inbox] as Tab] : []),
+    ...(isAdmin ? [
+      ["Admin", "/dashboard/admin", ShieldCheck] as Tab,
+      ["Domains", "/dashboard/admin/domains", Globe] as Tab,
+      ["DB", "/dashboard/admin/db", Database] as Tab,
+      ["Social", "/dashboard/admin/social", ImageIcon] as Tab,
+      ["Inbox", "/dashboard/admin/inbox", Inbox] as Tab,
+    ] : []),
   ];
 
   function isActive(href: string) {
@@ -20,7 +26,7 @@ export function DashboardTabs({ isAdmin }: { isAdmin: boolean }) {
 
   return (
     <nav
-      className="flex gap-1 rounded-lg p-1"
+      className="flex gap-1 rounded-lg p-1 overflow-x-auto"
       style={{
         background: "rgba(255,255,255,0.03)",
         border: "1px solid rgba(255,255,255,0.07)",
@@ -29,12 +35,12 @@ export function DashboardTabs({ isAdmin }: { isAdmin: boolean }) {
     >
       {TABS.map(([label, href, Icon]) => {
         const active = isActive(href);
-        const adminStyle = label === "Admin";
+        const adminStyle = label !== "Projects" && label !== "Billing";
         return (
           <Link
             key={href}
             href={href}
-            className="flex items-center gap-1.5 px-4 py-2 rounded-md text-sm tracking-wide transition-all duration-150"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm tracking-wide transition-all duration-150 whitespace-nowrap"
             style={{
               background: active ? (adminStyle ? "rgba(110,139,255,0.12)" : "rgba(255,255,255,0.07)") : "transparent",
               color: active

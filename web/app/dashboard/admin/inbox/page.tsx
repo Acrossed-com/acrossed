@@ -9,6 +9,11 @@ interface Message {
   from: string; to: string; subject: string; date: string; preview: string;
 }
 
+function toSafeId(id: string): string {
+  // Convert the URL-encoded maildir ID to a base64url-safe string for the link
+  return Buffer.from(id).toString("base64url");
+}
+
 export default async function AdminInbox() {
   const isAdmin = await requireAdmin();
   if (!isAdmin) {
@@ -43,7 +48,7 @@ export default async function AdminInbox() {
       ) : (
         <div className="surface overflow-hidden">
           {data.messages.map((m, i) => (
-            <Link key={m.id} href={`/dashboard/admin/inbox/${m.id}`}
+            <Link key={m.id} href={`/dashboard/admin/inbox/${toSafeId(m.id)}`}
               className={`block p-4 hover:bg-bg-elev transition-colors ${i > 0 ? "border-t border-line" : ""}`}>
               <div className="flex items-start justify-between gap-4">
                 <div className="min-w-0 flex-1">
