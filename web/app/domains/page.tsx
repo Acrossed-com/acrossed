@@ -142,20 +142,7 @@ export default async function DomainsPage() {
           </div>
         </div>
 
-        {/* Nameserver info */}
-        <div className="mt-6 surface p-6">
-          <h2 className="font-display text-lg font-semibold" style={{ color: "#ECEDEE" }}>Selling a domain?</h2>
-          <p className="mt-2 text-sm" style={{ color: "#A1A1AA" }}>
-            Point your domain&apos;s nameservers to list it on our marketplace:
-          </p>
-          <div className="mt-3 grid gap-2 sm:grid-cols-2">
-            <code className="rounded-lg border border-line bg-bg-elev px-4 py-2.5 text-sm text-brand">forsale1.dnserver.cloud</code>
-            <code className="rounded-lg border border-line bg-bg-elev px-4 py-2.5 text-sm text-brand">forsale2.dnserver.cloud</code>
-          </div>
-          <p className="mt-3 text-xs text-ink-low">
-            Contact <a href="mailto:forsale@acrossed.com" style={{ color: "#6E8BFF" }}>forsale@acrossed.com</a> to get started.
-          </p>
-        </div>
+
       </main>
       <Footer />
     </>
